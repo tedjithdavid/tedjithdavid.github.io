@@ -1,8 +1,271 @@
 <!DOCTYPE html>
-<html>
-<head><title>Ted the Cloud Admin</title></head>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tedjith David | Workplace Tech Engineer</title>
+<meta name="description" content="Practical guides on Windows Client, Windows Server, Microsoft Intune, SCCM, Entra ID and Azure Virtual Desktop by Tedjith David.">
+<style>
+  :root {
+    --navy: #0b1f3a;
+    --navy-2: #1e3a6e;
+    --blue: #2f5bd3;
+    --blue-dark: #2347a8;
+    --blue-soft: #eaf0fc;
+    --black: #0a0a0a;
+    --text: #1a1a1a;
+    --muted: #5b6475;
+    --line: #e3e7ee;
+    --bg: #ffffff;
+    --bg-alt: #f5f7fb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 56px; }
+  body {
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--text); background: var(--bg);
+    line-height: 1.55; font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  /* Navigation */
+  header { position: sticky; top: 0; z-index: 10; background: var(--navy); }
+  nav { display: flex; align-items: center; justify-content: space-between; height: 52px; }
+  .logo { font-weight: 700; color: #fff; font-size: 16px; }
+  .logo span { color: #8fb0ff; }
+  .logo:hover { text-decoration: none; }
+  .links { display: flex; align-items: center; gap: 20px; }
+  .links a { color: #d6deee; font-size: 14px; }
+  .links a:hover { color: #fff; text-decoration: none; }
+  .links a.blog-link { color: #fff; background: var(--blue); font-weight: 600; padding: 5px 14px; border-radius: 4px; }
+  .links a.blog-link:hover { background: var(--blue-dark); }
+
+  /* Hero */
+  .hero { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%); color: #fff; padding: 40px 0 36px; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+  .hero .eyebrow { color: #8fb0ff; }
+  .hero h1 { font-size: 34px; line-height: 1.15; font-weight: 700; }
+  .hero .role { font-size: 16px; color: #c9d4ea; margin: 4px 0 12px; }
+  .hero .role b { color: #fff; font-weight: 600; }
+  .hero p { max-width: 620px; color: #e6ebf5; margin-bottom: 18px; }
+  .btn { display: inline-block; padding: 8px 18px; border-radius: 4px; font-weight: 600; font-size: 14px; background: var(--blue); color: #fff; }
+  .btn:hover { background: var(--blue-dark); text-decoration: none; }
+
+  /* Sections */
+  section { padding: 32px 0; border-bottom: 1px solid var(--line); }
+  section.alt { background: var(--bg-alt); }
+  h2 { font-size: 20px; color: var(--navy); font-weight: 700; margin-bottom: 14px; }
+
+  /* How it helps */
+  .helps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .helps div { border-left: 3px solid var(--blue); padding: 2px 0 2px 12px; }
+  .helps b { display: block; color: var(--black); font-size: 15px; }
+  .helps span { color: var(--muted); font-size: 14px; }
+
+  /* Topics */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 4px; background: #fff; border: 1px solid var(--line); color: var(--navy-2); }
+
+  /* About */
+  .about { display: grid; grid-template-columns: 1.5fr 1fr; gap: 28px; align-items: center; }
+  .about p { color: var(--text); }
+  .numbers { display: flex; gap: 12px; margin-top: 12px; }
+  .numbers div { flex: 1; background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--blue); border-radius: 4px; padding: 8px 14px; }
+  .numbers b { display: block; font-size: 20px; color: var(--navy); line-height: 1.2; }
+  .numbers span { font-size: 13px; color: var(--muted); }
+  .facts { list-style: none; font-size: 14px; }
+  .facts li { padding: 7px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; }
+  .facts li:last-child { border-bottom: none; }
+  .facts b { color: var(--muted); font-weight: 600; white-space: nowrap; }
+  .facts span { text-align: right; }
+
+  /* Blog */
+  .post { display: flex; justify-content: space-between; align-items: center; gap: 16px; background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--blue); border-radius: 4px; padding: 14px 18px; }
+  .post h3 { font-size: 16px; color: var(--black); font-weight: 600; }
+  .post .cat { font-size: 11px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; }
+  .soon { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 3px; background: var(--navy); color: #fff; letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
+
+  /* Footer */
+  footer { background: var(--navy); color: #c9d4ea; padding: 16px 0; font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  footer .social { display: flex; gap: 18px; }
+  footer a { color: #fff; font-weight: 600; }
+
+  /* Helper */
+  .helper { position: fixed; right: 20px; bottom: 20px; display: flex; align-items: flex-end; gap: 10px; z-index: 20; }
+  .bubble { position: relative; max-width: 250px; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px 10px; font-size: 13.5px; box-shadow: 0 8px 24px rgba(11,31,58,0.18); }
+  .bubble::after { content: ""; position: absolute; right: -7px; bottom: 18px; width: 12px; height: 12px; background: #fff; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transform: rotate(-45deg); }
+  .bubble .tip-head { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 4px; }
+  .bubble .actions { display: flex; justify-content: space-between; margin-top: 8px; }
+  .bubble button { background: none; border: none; font: inherit; font-size: 12.5px; font-weight: 600; color: var(--blue); cursor: pointer; padding: 0; }
+  .bubble button.close { color: var(--muted); }
+  .bot { width: 64px; height: 52px; cursor: pointer; animation: float 3s ease-in-out infinite; flex-shrink: 0; }
+  .helper.hidden .bubble { display: none; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+  @media (prefers-reduced-motion: reduce) { .bot { animation: none; } }
+
+  /* Mobile */
+  @media (max-width: 760px) {
+    .links a:not(.blog-link) { display: none; }
+    .hero h1 { font-size: 28px; }
+    .helps { grid-template-columns: 1fr 1fr; }
+    .about { grid-template-columns: 1fr; gap: 16px; }
+    .post { flex-direction: column; align-items: flex-start; }
+    .bubble { max-width: 200px; }
+  }
+</style>
+</head>
 <body>
-  <h1>Hello, I'm Ted</h1>
-  <p>Welcome to my website.</p>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#" class="logo">Ted<span>.</span>CloudAdmin</a>
+      <div class="links">
+        <a href="#helps">How It Helps</a>
+        <a href="#topics">Topics</a>
+        <a href="#about">About</a>
+        <a href="#blog" class="blog-link">Blogs</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Windows Client · Windows Server · Intune · Entra · Azure Virtual Desktop</div>
+    <h1>Tedjith David</h1>
+    <div class="role"><b>Workplace Tech Engineer</b> at IG Group, Bengaluru</div>
+    <p>Practical, tested guides for Windows engineers and IT admins managing clients, servers and virtual desktops.</p>
+    <a href="#blog" class="btn">Read the Blogs</a>
+  </div>
+</div>
+
+<!-- HOW IT HELPS -->
+<section id="helps">
+  <div class="wrap">
+    <h2>How This Site Helps You</h2>
+    <div class="helps">
+      <div><b>Tested in Production</b><span>Proven on live Windows Clients and Servers.</span></div>
+      <div><b>Clear Steps</b><span>Exact paths, settings and values to follow.</span></div>
+      <div><b>Ready Scripts</b><span>PowerShell and Graph you can copy and run.</span></div>
+      <div><b>Free for All</b><span>No sign up, no paywall.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS -->
+<section id="topics" class="alt">
+  <div class="wrap">
+    <h2>Topics</h2>
+    <div class="chips">
+      <span class="chip">Microsoft Intune</span>
+      <span class="chip">SCCM / MECM</span>
+      <span class="chip">Windows Autopilot</span>
+      <span class="chip">Entra ID</span>
+      <span class="chip">Azure Virtual Desktop</span>
+      <span class="chip">Windows 365</span>
+      <span class="chip">Windows Server Patching</span>
+      <span class="chip">Endpoint Security</span>
+      <span class="chip">PowerShell &amp; Graph API</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <div class="about">
+      <div>
+        <p>Workplace Tech Engineer at IG Group with 14+ years in enterprise IT. I manage the company's Windows endpoint estate and automate it with PowerShell and Microsoft Graph.</p>
+        <div class="numbers">
+          <div><b>2,000+</b><span>Windows Clients via Intune</span></div>
+          <div><b>500+</b><span>Windows Servers via SCCM</span></div>
+        </div>
+      </div>
+      <ul class="facts">
+        <li><b>Specialist In</b><span>Microsoft Intune and SCCM</span></li>
+        <li><b>Certification</b><span>MD-102 Endpoint Administrator</span></li>
+        <li><b>Based In</b><span>Bengaluru, India</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BLOGS -->
+<section id="blog" class="alt">
+  <div class="wrap">
+    <h2>Blogs</h2>
+    <!-- ARTICLE CARD -->
+    <div class="post">
+      <div>
+        <div class="cat">Microsoft Ignite</div>
+        <h3>Latest Updates from Microsoft Ignite - November 2026</h3>
+      </div>
+      <span class="soon">Coming Soon</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Tedjith David · tedthecloudadmin.com</span>
+    <div class="social">
+      <a href="mailto:tedjith.david@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/tedjith-david/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/tedjithdavid" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<!-- HELPER: original cloud character with Windows tips -->
+<div class="helper" id="helper">
+  <div class="bubble">
+    <div class="tip-head">Quick Tip</div>
+    <div id="tip">Hi! I'm Tomo. Click Next tip for a Windows tip.</div>
+    <div class="actions">
+      <button type="button" id="next">Next tip →</button>
+      <button type="button" class="close" id="close">Hide</button>
+    </div>
+  </div>
+  <svg class="bot" id="bot" viewBox="0 0 64 52" role="img" aria-label="Tomo, the site helper">
+    <path d="M16 46 a12 12 0 0 1 -1 -24 a16 16 0 0 1 30 -6 a12 12 0 0 1 4 30 z" fill="#ffffff" stroke="#1e3a6e" stroke-width="2.5" stroke-linejoin="round"/>
+    <rect x="22" y="26" width="5" height="7" rx="2.5" fill="#0b1f3a"/>
+    <rect x="35" y="26" width="5" height="7" rx="2.5" fill="#0b1f3a"/>
+    <path d="M26 37 q5 4 10 0" fill="none" stroke="#2f5bd3" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<script>
+  var tips = [
+    "Hi! I'm Tomo. Click Next tip for a Windows tip.",
+    "Run dsregcmd /status to check if a device is Entra joined.",
+    "Use the Settings Catalog in Intune to replace most Group Policy settings.",
+    "Check IME logs in C:\\ProgramData\\Microsoft\\IntuneManagementExtension\\Logs for Win32 app issues.",
+    "Run Get-WindowsAutopilotInfo to capture a device hardware hash.",
+    "In SCCM, use maintenance windows so server patching never surprises anyone.",
+    "Scaling plans in Azure Virtual Desktop can cut session host costs overnight.",
+    "Press Shift + F10 during Windows setup to open a command prompt."
+  ];
+  var i = 0;
+  var helper = document.getElementById("helper");
+  var tip = document.getElementById("tip");
+  document.getElementById("next").onclick = function () { i = (i + 1) % tips.length; tip.textContent = tips[i]; };
+  document.getElementById("close").onclick = function () {
+    helper.classList.add("hidden");
+    try { localStorage.setItem("tomoHidden", "1"); } catch (e) {}
+  };
+  document.getElementById("bot").onclick = function () {
+    helper.classList.toggle("hidden");
+    try { localStorage.setItem("tomoHidden", helper.classList.contains("hidden") ? "1" : "0"); } catch (e) {}
+  };
+  try { if (localStorage.getItem("tomoHidden") === "1") helper.classList.add("hidden"); } catch (e) {}
+</script>
+
 </body>
 </html>
