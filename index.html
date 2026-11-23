@@ -103,7 +103,9 @@
   .visits .dot { width: 7px; height: 7px; border-radius: 50%; background: #8fb0ff; }
 
   /* Helper */
-  .helper { position: fixed; right: 20px; bottom: 20px; width: 64px; height: 52px; z-index: 20; }
+  .helper { position: absolute; top: 72px; right: 24px; width: 64px; height: 52px; z-index: 20; }
+  @media (max-width: 720px) { .helper:not(.moved) { top: 0; right: 92px; } }
+  .helper.moved { position: fixed; }
   .bubble { position: absolute; right: 76px; bottom: 0; width: 250px; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px 10px; font-size: 13.5px; box-shadow: 0 8px 24px rgba(11,31,58,0.18); }
   .bubble::after { content: ""; position: absolute; right: -7px; bottom: 18px; width: 12px; height: 12px; background: #fff; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transform: rotate(-45deg); }
   .bubble .tip-head { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 4px; }
@@ -119,7 +121,7 @@
   .helper.top .bubble::after { bottom: auto; top: 18px; }
   .helper.left .bubble::after { right: auto; left: -7px; transform: rotate(135deg); }
   .drag-hint { font-size: 11px; color: var(--muted); margin-top: 6px; }
-  .helper.hidden .bubble { display: none; }
+  .helper.closed .bubble { display: none; }
   @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
   @media (prefers-reduced-motion: reduce) { .bot { animation: none; } }
 
@@ -239,7 +241,7 @@
 </footer>
 
 <!-- HELPER: original cloud character with Windows tips -->
-<div class="helper" id="helper">
+<div class="helper top" id="helper">
   <div class="bubble">
     <div class="tip-head">Quick Tip</div>
     <div id="tip">Hi! I'm Tomo. Click Next tip for a Windows tip.</div>
@@ -273,10 +275,15 @@
   var tip = document.getElementById("tip");
   document.getElementById("next").onclick = function () { i = (i + 1) % tips.length; tip.textContent = tips[i]; };
   document.getElementById("close").onclick = function () {
-    helper.classList.add("hidden");
+    helper.classList.add("closed");
     try { localStorage.setItem("tomoHidden", "1"); } catch (e) {}
   };
-  try { if (localStorage.getItem("tomoHidden") === "1") helper.classList.add("hidden"); } catch (e) {}
+  if (window.innerWidth < 760) helper.classList.add("closed");
+  try {
+    var pref = localStorage.getItem("tomoHidden");
+    if (pref === "1") helper.classList.add("closed");
+    if (pref === "0") helper.classList.remove("closed");
+  } catch (e) {}
 
   // Drag Tomo around. A short click still opens or closes the bubble.
   var bot = document.getElementById("bot");
@@ -288,6 +295,7 @@
     var r = helper.getBoundingClientRect();
     left = clamp(left, 0, window.innerWidth - r.width);
     top = clamp(top, 0, window.innerHeight - r.height);
+    helper.classList.add("moved");
     helper.style.left = left + "px";
     helper.style.top = top + "px";
     helper.style.right = "auto";
@@ -319,17 +327,17 @@
     helper.classList.remove("dragging");
     if (moved) {
       var r = helper.getBoundingClientRect();
-      try { localStorage.setItem("tomoPos", JSON.stringify({ x: r.left / window.innerWidth, y: r.top / window.innerHeight })); } catch (e) {}
+      try { localStorage.setItem("tomoPos2", JSON.stringify({ x: r.left / window.innerWidth, y: r.top / window.innerHeight })); } catch (e) {}
     } else {
-      helper.classList.toggle("hidden");
-      try { localStorage.setItem("tomoHidden", helper.classList.contains("hidden") ? "1" : "0"); } catch (e) {}
+      helper.classList.toggle("closed");
+      try { localStorage.setItem("tomoHidden", helper.classList.contains("closed") ? "1" : "0"); } catch (e) {}
     }
   });
 
   // Restore the last position, and keep Tomo on screen if the window is resized
   function restore() {
     try {
-      var p = JSON.parse(localStorage.getItem("tomoPos"));
+      var p = JSON.parse(localStorage.getItem("tomoPos2"));
       if (p) place(p.x * window.innerWidth, p.y * window.innerHeight);
     } catch (e) {}
   }
