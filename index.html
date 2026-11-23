@@ -87,6 +87,10 @@
   .post { display: flex; justify-content: space-between; align-items: center; gap: 16px; background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--blue); border-radius: 6px; padding: 14px 18px; }
   .post h3 { font-size: 16px; color: var(--black); font-weight: 600; }
   .post .cat { font-size: 11px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; }
+  a.post { color: inherit; text-decoration: none; transition: border-color .15s, background .15s; }
+  a.post:hover { border-color: var(--blue); background: var(--blue-soft); text-decoration: none; }
+  .post-sum { color: var(--muted); font-size: 14px; margin-top: 2px; }
+  .read { font-size: 13px; font-weight: 700; color: #fff; background: var(--blue); padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
   .soon { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 3px; background: var(--navy); color: #fff; letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
 
   /* Footer */
@@ -209,14 +213,15 @@
 <section id="blog" class="alt">
   <div class="wrap">
     <div class="sec-head"><h2>Blogs</h2><p>Latest writing.</p></div>
-    <!-- ARTICLE CARD -->
-    <div class="post">
+    <!-- ARTICLE CARD: copy this block for each new article, newest first -->
+    <a class="post" href="blog/microsoft-ignite-2026.html">
       <div>
-        <div class="cat">Microsoft Ignite</div>
+        <div class="cat">Microsoft Ignite · 23 November 2026</div>
         <h3>Latest Updates from Microsoft Ignite - November 2026</h3>
+        <p class="post-sum">84 endpoint changes across Intune, Windows 11, Autopilot, Autopatch, Windows Server and Windows 365.</p>
       </div>
-      <span class="soon">Coming Soon</span>
-    </div>
+      <span class="read">Read article →</span>
+    </a>
   </div>
 </section>
 
