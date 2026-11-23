@@ -55,38 +55,35 @@
   .btn:hover { background: var(--blue-dark); text-decoration: none; }
 
   /* Sections */
-  section { padding: 32px 0; border-bottom: 1px solid var(--line); }
+  section { padding: 36px 0; border-bottom: 1px solid var(--line); }
   section.alt { background: var(--bg-alt); }
-  h2 { font-size: 20px; color: var(--navy); font-weight: 700; margin-bottom: 14px; }
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+  h2 { font-size: 21px; color: var(--navy); font-weight: 700; }
+  .sec-head p { color: var(--muted); font-size: 14px; }
 
-  /* How it helps */
-  .helps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .helps div { border-left: 3px solid var(--blue); padding: 2px 0 2px 12px; }
-  .helps b { display: block; color: var(--black); font-size: 15px; }
-  .helps span { color: var(--muted); font-size: 14px; }
+  /* Shared tile */
+  .tile { background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--blue); border-radius: 6px; padding: 14px 16px; }
+  .tile b { display: block; color: var(--black); font-size: 15px; font-weight: 600; }
+  .tile span { display: block; color: var(--muted); font-size: 13.5px; margin-top: 2px; }
+  .tile .label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+  .tile .value { font-size: 22px; font-weight: 700; color: var(--navy); line-height: 1.2; }
+
+  .grid { display: grid; gap: 12px; }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .g5 { grid-template-columns: repeat(5, 1fr); }
+  .grid + .grid { margin-top: 12px; }
 
   /* Topics */
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip { font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 4px; background: #fff; border: 1px solid var(--line); color: var(--navy-2); }
+  .topic { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 58px; border-top: 1px solid var(--line); border-left: 3px solid var(--blue); font-weight: 600; color: var(--navy-2); font-size: 14.5px; }
 
   /* About */
-  .about { display: grid; grid-template-columns: 1.5fr 1fr; gap: 28px; align-items: center; }
-  .about p { color: var(--text); }
-  .numbers { display: flex; gap: 12px; margin-top: 12px; }
-  .numbers div { flex: 1; background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--blue); border-radius: 4px; padding: 8px 14px; }
-  .numbers b { display: block; font-size: 20px; color: var(--navy); line-height: 1.2; }
-  .numbers span { font-size: 13px; color: var(--muted); }
-  .facts { list-style: none; font-size: 14px; }
-  .facts li { padding: 7px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; }
-  .facts li:last-child { border-bottom: none; }
-  .facts b { color: var(--muted); font-weight: 600; white-space: nowrap; }
-  .facts span { text-align: right; }
+  .about-text { max-width: 760px; margin-bottom: 16px; }
 
   /* Blog */
-  .post { display: flex; justify-content: space-between; align-items: center; gap: 16px; background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--blue); border-radius: 4px; padding: 14px 18px; }
+  .post { display: flex; justify-content: space-between; align-items: center; gap: 16px; background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--blue); border-radius: 6px; padding: 14px 18px; }
   .post h3 { font-size: 16px; color: var(--black); font-weight: 600; }
   .post .cat { font-size: 11px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; }
-  .soon { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 3px; background: var(--navy); color: #fff; letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
+  .soon { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 3px; background: var(--navy); color: #fff; letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
 
   /* Footer */
   footer { background: var(--navy); color: #c9d4ea; padding: 16px 0; font-size: 14px; }
@@ -95,14 +92,22 @@
   footer a { color: #fff; font-weight: 600; }
 
   /* Helper */
-  .helper { position: fixed; right: 20px; bottom: 20px; display: flex; align-items: flex-end; gap: 10px; z-index: 20; }
-  .bubble { position: relative; max-width: 250px; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px 10px; font-size: 13.5px; box-shadow: 0 8px 24px rgba(11,31,58,0.18); }
+  .helper { position: fixed; right: 20px; bottom: 20px; width: 64px; height: 52px; z-index: 20; }
+  .bubble { position: absolute; right: 76px; bottom: 0; width: 250px; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px 10px; font-size: 13.5px; box-shadow: 0 8px 24px rgba(11,31,58,0.18); }
   .bubble::after { content: ""; position: absolute; right: -7px; bottom: 18px; width: 12px; height: 12px; background: #fff; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transform: rotate(-45deg); }
   .bubble .tip-head { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 4px; }
   .bubble .actions { display: flex; justify-content: space-between; margin-top: 8px; }
   .bubble button { background: none; border: none; font: inherit; font-size: 12.5px; font-weight: 600; color: var(--blue); cursor: pointer; padding: 0; }
   .bubble button.close { color: var(--muted); }
-  .bot { width: 64px; height: 52px; cursor: pointer; animation: float 3s ease-in-out infinite; flex-shrink: 0; }
+  .bot { width: 64px; height: 52px; cursor: grab; animation: float 3s ease-in-out infinite; flex-shrink: 0; touch-action: none; user-select: none; }
+  .helper.dragging .bot { cursor: grabbing; animation: none; }
+  .helper.dragging { transition: none; }
+  /* When Tomo is on the left side, the bubble flips to his right */
+  .helper.left .bubble { right: auto; left: 76px; }
+  .helper.top .bubble { bottom: auto; top: 0; }
+  .helper.top .bubble::after { bottom: auto; top: 18px; }
+  .helper.left .bubble::after { right: auto; left: -7px; transform: rotate(135deg); }
+  .drag-hint { font-size: 11px; color: var(--muted); margin-top: 6px; }
   .helper.hidden .bubble { display: none; }
   @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
   @media (prefers-reduced-motion: reduce) { .bot { animation: none; } }
@@ -111,10 +116,11 @@
   @media (max-width: 760px) {
     .links a:not(.blog-link) { display: none; }
     .hero h1 { font-size: 28px; }
-    .helps { grid-template-columns: 1fr 1fr; }
-    .about { grid-template-columns: 1fr; gap: 16px; }
+    .g4, .g5 { grid-template-columns: 1fr 1fr; }
+    .g5 .tile:last-child { grid-column: span 2; }
+    .sec-head p { display: none; }
     .post { flex-direction: column; align-items: flex-start; }
-    .bubble { max-width: 200px; }
+    .bubble { width: 200px; }
   }
 </style>
 </head>
@@ -123,7 +129,7 @@
 <header>
   <div class="wrap">
     <nav>
-      <a href="#" class="logo">Ted<span>.</span>CloudAdmin</a>
+      <a href="/" class="logo">Ted <span>- The Cloud Admin</span></a>
       <div class="links">
         <a href="#helps">How It Helps</a>
         <a href="#topics">Topics</a>
@@ -148,12 +154,12 @@
 <!-- HOW IT HELPS -->
 <section id="helps">
   <div class="wrap">
-    <h2>How This Site Helps You</h2>
-    <div class="helps">
-      <div><b>Tested in Production</b><span>Proven on live Windows Clients and Servers.</span></div>
-      <div><b>Clear Steps</b><span>Exact paths, settings and values to follow.</span></div>
-      <div><b>Ready Scripts</b><span>PowerShell and Graph you can copy and run.</span></div>
-      <div><b>Free for All</b><span>No sign up, no paywall.</span></div>
+    <div class="sec-head"><h2>How This Site Helps You</h2><p>Answers that work, not theory.</p></div>
+    <div class="grid g4">
+      <div class="tile"><b>Tested in Production</b><span>Proven on live Windows Clients and Servers.</span></div>
+      <div class="tile"><b>Clear Steps</b><span>Exact paths, settings and values to follow.</span></div>
+      <div class="tile"><b>Ready Scripts</b><span>PowerShell and Graph you can copy and run.</span></div>
+      <div class="tile"><b>Free for All</b><span>No sign up, no paywall.</span></div>
     </div>
   </div>
 </section>
@@ -161,17 +167,19 @@
 <!-- TOPICS -->
 <section id="topics" class="alt">
   <div class="wrap">
-    <h2>Topics</h2>
-    <div class="chips">
-      <span class="chip">Microsoft Intune</span>
-      <span class="chip">SCCM / MECM</span>
-      <span class="chip">Windows Autopilot</span>
-      <span class="chip">Entra ID</span>
-      <span class="chip">Azure Virtual Desktop</span>
-      <span class="chip">Windows 365</span>
-      <span class="chip">Windows Server Patching</span>
-      <span class="chip">Endpoint Security</span>
-      <span class="chip">PowerShell &amp; Graph API</span>
+    <div class="sec-head"><h2>Topics</h2><p>What I write about.</p></div>
+    <div class="grid g5">
+      <div class="tile topic">Microsoft Intune</div>
+      <div class="tile topic">SCCM / MECM</div>
+      <div class="tile topic">Entra</div>
+      <div class="tile topic">Windows 365</div>
+      <div class="tile topic">Windows Servers</div>
+    </div>
+    <div class="grid g4">
+      <div class="tile topic">Windows Autopilot</div>
+      <div class="tile topic">Autopatch</div>
+      <div class="tile topic">Endpoint Security</div>
+      <div class="tile topic">PowerShell and Graph API</div>
     </div>
   </div>
 </section>
@@ -179,20 +187,13 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
-    <h2>About</h2>
-    <div class="about">
-      <div>
-        <p>Workplace Tech Engineer at IG Group with 14+ years in enterprise IT. I manage the company's Windows endpoint estate and automate it with PowerShell and Microsoft Graph.</p>
-        <div class="numbers">
-          <div><b>2,000+</b><span>Windows Clients via Intune</span></div>
-          <div><b>500+</b><span>Windows Servers via SCCM</span></div>
-        </div>
-      </div>
-      <ul class="facts">
-        <li><b>Specialist In</b><span>Microsoft Intune and SCCM</span></li>
-        <li><b>Certification</b><span>MD-102 Endpoint Administrator</span></li>
-        <li><b>Based In</b><span>Bengaluru, India</span></li>
-      </ul>
+    <div class="sec-head"><h2>About</h2><p>Bengaluru, India</p></div>
+    <p class="about-text">Workplace Tech Engineer at IG Group with 14+ years in enterprise IT. I manage the company's Windows endpoint estate and automate it with PowerShell and Microsoft Graph.</p>
+    <div class="grid g4">
+      <div class="tile"><div class="label">Windows Clients</div><div class="value">2,000+</div><span>Managed via Intune</span></div>
+      <div class="tile"><div class="label">Windows Servers</div><div class="value">500+</div><span>Managed via SCCM</span></div>
+      <div class="tile"><div class="label">Specialist In</div><b>Microsoft Intune</b><span>and SCCM / MECM</span></div>
+      <div class="tile"><div class="label">Certification</div><b>MD-102</b><span>Endpoint Administrator Associate</span></div>
     </div>
   </div>
 </section>
@@ -200,7 +201,7 @@
 <!-- BLOGS -->
 <section id="blog" class="alt">
   <div class="wrap">
-    <h2>Blogs</h2>
+    <div class="sec-head"><h2>Blogs</h2><p>Latest writing.</p></div>
     <!-- ARTICLE CARD -->
     <div class="post">
       <div>
@@ -232,6 +233,7 @@
       <button type="button" id="next">Next tip →</button>
       <button type="button" class="close" id="close">Hide</button>
     </div>
+    <div class="drag-hint">Drag me anywhere on the page.</div>
   </div>
   <svg class="bot" id="bot" viewBox="0 0 64 52" role="img" aria-label="Tomo, the site helper">
     <path d="M16 46 a12 12 0 0 1 -1 -24 a16 16 0 0 1 30 -6 a12 12 0 0 1 4 30 z" fill="#ffffff" stroke="#1e3a6e" stroke-width="2.5" stroke-linejoin="round"/>
@@ -260,11 +262,67 @@
     helper.classList.add("hidden");
     try { localStorage.setItem("tomoHidden", "1"); } catch (e) {}
   };
-  document.getElementById("bot").onclick = function () {
-    helper.classList.toggle("hidden");
-    try { localStorage.setItem("tomoHidden", helper.classList.contains("hidden") ? "1" : "0"); } catch (e) {}
-  };
   try { if (localStorage.getItem("tomoHidden") === "1") helper.classList.add("hidden"); } catch (e) {}
+
+  // Drag Tomo around. A short click still opens or closes the bubble.
+  var bot = document.getElementById("bot");
+  var startX, startY, startLeft, startTop, moved = false, down = false;
+
+  function clamp(v, min, max) { return Math.max(min, Math.min(v, max)); }
+
+  function place(left, top) {
+    var r = helper.getBoundingClientRect();
+    left = clamp(left, 0, window.innerWidth - r.width);
+    top = clamp(top, 0, window.innerHeight - r.height);
+    helper.style.left = left + "px";
+    helper.style.top = top + "px";
+    helper.style.right = "auto";
+    helper.style.bottom = "auto";
+    // Flip the bubble so it always opens towards the middle of the screen
+    helper.classList.toggle("left", left + r.width / 2 < window.innerWidth / 2);
+    helper.classList.toggle("top", top + r.height / 2 < window.innerHeight / 2);
+  }
+
+  bot.addEventListener("pointerdown", function (e) {
+    down = true; moved = false;
+    var r = helper.getBoundingClientRect();
+    startX = e.clientX; startY = e.clientY; startLeft = r.left; startTop = r.top;
+    bot.setPointerCapture(e.pointerId);
+  });
+
+  bot.addEventListener("pointermove", function (e) {
+    if (!down) return;
+    var dx = e.clientX - startX, dy = e.clientY - startY;
+    if (!moved && Math.abs(dx) + Math.abs(dy) < 5) return;
+    moved = true;
+    helper.classList.add("dragging");
+    place(startLeft + dx, startTop + dy);
+  });
+
+  bot.addEventListener("pointerup", function () {
+    if (!down) return;
+    down = false;
+    helper.classList.remove("dragging");
+    if (moved) {
+      var r = helper.getBoundingClientRect();
+      try { localStorage.setItem("tomoPos", JSON.stringify({ x: r.left / window.innerWidth, y: r.top / window.innerHeight })); } catch (e) {}
+    } else {
+      helper.classList.toggle("hidden");
+      try { localStorage.setItem("tomoHidden", helper.classList.contains("hidden") ? "1" : "0"); } catch (e) {}
+    }
+  });
+
+  // Restore the last position, and keep Tomo on screen if the window is resized
+  function restore() {
+    try {
+      var p = JSON.parse(localStorage.getItem("tomoPos"));
+      if (p) place(p.x * window.innerWidth, p.y * window.innerHeight);
+    } catch (e) {}
+  }
+  restore();
+  window.addEventListener("resize", function () {
+    if (helper.style.left) { var r = helper.getBoundingClientRect(); place(r.left, r.top); }
+  });
 </script>
 
 </body>
